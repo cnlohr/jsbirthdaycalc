@@ -1,0 +1,42 @@
+<HTML>
+
+<HEAD>
+<SCRIPT>
+function Compute()
+{
+	var people = document.getElementById( "PEOPLE" ).value;
+	var birthdays = document.getElementById( "BIRTHDAYS" ).value;
+	var results = "xxx";
+
+	var probability = 1;
+	var i;
+	for( i = birthdays; i > birthdays-people; i-- )
+	{
+		probability *= i * 1.0 / birthdays;
+	}
+
+	//probability = probability * Math.pow( 1.0/birthdays, people );
+
+	results = "Probability of multiple people sharing same birthday: " + (100.0 - probability * 100.0) + " percent.";
+	document.getElementById("RESULTS").innerHTML = results;
+}
+</SCRIPT>
+</HEAD>
+
+<BODY>
+
+Birthday problem calculator based on: <A HREF=https://en.wikipedia.org/wiki/Birthday_problem>https://en.wikipedia.org/wiki/Birthday_problem</A>.
+This is useful for computing possibility of collisions upon things with random distributions.  People are the number of things.  Birthday days are the number of possibilities.
+<BR>
+<TABLE BORDER=1>
+<TR><TD>Number of people:</TD><TD><INPUT TYPE=TEXT ID=PEOPLE></TD></TR>
+<TR><TD>Number of birthday days:</TD><TD><INPUT TYPE=TEXT ID=BIRTHDAYS></TD></TR>
+<TR><TD COLSPAN = 2><INPUT TYPE=SUBMIT VALUE=Compute ONCLICK="Compute()"></TD></TR>
+</TABLE>
+
+<DIV ID=RESULTS>Results</DIV>
+
+</BODY>
+</HTML>
+
+
